@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Drawer from 'material-ui/Drawer';
 import Typography from 'material-ui/Typography';
-import Divider from 'material-ui/Divider';
 
 const Sidebar = (props) => {
   const { classes, open, onRequestClose } = props;
