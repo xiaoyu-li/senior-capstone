@@ -4,12 +4,8 @@ import { withStyles } from 'material-ui/styles/';
 import grey from 'material-ui/colors/grey';
 
 const BadgeMenu = (props) => {
-  const { classes } = props;
-  return (
-    <div className={classes.menu}>
-      <p>1</p>
-    </div>
-  );
+  const { classes, children } = props;
+  return <div className={classes.menu}>{children}</div>;
 };
 
 BadgeMenu.propTypes = {
@@ -21,7 +17,7 @@ const styles = () => ({
     borderRadius: '5px 5px 0 0',
     background: grey[100],
     left: 80,
-    top: 80,
+    top: 150,
     bottom: 0,
     width: 400,
     position: 'fixed',

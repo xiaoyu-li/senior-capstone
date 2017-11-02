@@ -7,7 +7,7 @@ const Welcome = (props) => {
   const { classes } = props;
   return (
     <div className={classes.welcome}>
-      <div style={{ display: 'table-cell', 'vertical-align': 'middle' }}>
+      <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
         <Typography type="display2" noWrap color="inherit" gutterBottom>
           Hi, $username!
         </Typography>
@@ -28,7 +28,7 @@ const styles = () => ({
     color: '#fff',
     display: 'table',
     height: '100%',
-    left: 96,
+    left: 200,
     top: 0,
     marginLeft: 480,
     minHeight: 400,

@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import BadgeMenu from '../components/BadgeMenu';
 import Welcome from '../components/Welcome';
+import BadgePanel from '../components/BadgePanel';
 
 class BasicLayout extends Component {
   state = { drawerOpen: false };
@@ -26,7 +27,15 @@ class BasicLayout extends Component {
         <div className={classes.imageBG} />
         <div className={classes.imageWrapper} />
         <Sidebar open={this.state.drawerOpen} onRequestClose={this.handleSidebarClose} />
-        <BadgeMenu />
+        <BadgeMenu>
+          <BadgePanel label="Muladhara" type="t1" progress="10" />
+          <BadgePanel label="Swadhisthana" type="t2" progress="11" />
+          <BadgePanel label="Manipura" type="t3" progress="12" />
+          <BadgePanel label="Anahata" type="t4" progress="13" />
+          <BadgePanel label="Vishuddha" type="t5" progress="14" />
+          <BadgePanel label="Ajna" type="t6" progress="15" />
+          <BadgePanel label="Sahasrara" type="t7" progress="16" />
+        </BadgeMenu>
         <Welcome />
       </div>
     );
