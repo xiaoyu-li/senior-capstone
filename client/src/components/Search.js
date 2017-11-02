@@ -5,13 +5,13 @@ import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
   wrapper: {
-    height: 40,
+    height: 50,
     fontFamily: theme.typography.fontFamily,
     position: 'relative',
     borderRadius: 4,
     background: '#f5f5f5',
     '& $input': {
-      transition: 'background 100ms ease-in',
+      transition: 'all 100ms ease-in',
       width: 500,
       '&:focus': {
         border: '1px solid rgba(0,0,0,0.12)',
@@ -34,7 +34,7 @@ const styles = theme => ({
     justifyContent: 'center',
   },
   input: {
-    height: 40,
+    height: 50,
     font: 'inherit',
     padding: `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px ${theme
       .spacing.unit * 9}px`,

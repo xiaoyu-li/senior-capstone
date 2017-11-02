@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from 'material-ui/styles';
+import Avatar from 'material-ui/Avatar';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Tooltip from 'material-ui/Tooltip';
@@ -9,40 +10,37 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import Notifacation from 'material-ui-icons/Notifacation';
+import Notifications from 'material-ui-icons/Notifications';
+import Settings from 'material-ui-icons/Settings';
+
+import deepPurple from 'material-ui/colors/deepPurple';
 import Search from './Search';
 
 const Header = (props) => {
   // page title
-  const title = 'Home';
+  const title = 'Badging System';
   const { classes, onClickMenu } = props;
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <IconButton className={classes.navIcon} onClick={onClickMenu}>
+        <IconButton onClick={onClickMenu} color="contrast">
           <MenuIcon />
         </IconButton>
-        <Typography className={classes.title} type="title" noWrap>
+        <Typography className={classes.title} type="title" noWrap color="inherit">
           {title}
         </Typography>
         <div className={classes.grow} />
-        <Search />
-        <Button className={classes.button} color="primary" dense>
-          Create
-        </Button>
-        <Button className={classes.button} color="primary" dense>
-          Upload
-        </Button>
-        <div className={classes.grow} />
-        <Tooltip title="Toggle light/dark theme" enterDelay={300}>
-          <IconButton aria-label="change theme">
-            <LightbulbOutline />
-          </IconButton>
-          <IconButton aria-label="change theme">
-            <Notifacation />
+        <Tooltip title="Notification" enterDelay={300}>
+          <IconButton aria-label="change theme" color="contrast">
+            <Notifications />
           </IconButton>
         </Tooltip>
+        <Tooltip title="Settings" enterDelay={300}>
+          <IconButton aria-label="change theme" color="contrast">
+            <Settings />
+          </IconButton>
+        </Tooltip>
+        <Avatar className={classes.avatar}>ML</Avatar>
       </Toolbar>
     </AppBar>
   );
@@ -53,7 +51,7 @@ Header.propTypes = {
   onClickMenu: PropTypes.func.isRequired,
 };
 
-const styles = theme => ({
+const styles = () => ({
   grow: {
     flex: '1 1 auto',
   },
@@ -62,17 +60,17 @@ const styles = theme => ({
     flex: '0 1 auto',
   },
   appBar: {
-    background: 'white',
-    transition: theme.transitions.create('width'),
-    '@media print': {
-      position: 'absolute',
-    },
+    background: 'transparent',
+    boxShadow: 'none',
   },
-  button: {
-    marginLeft: 2 * theme.spacing.unit,
-    '&:hover': {
-      background: 'none',
-    },
+
+  avatar: {
+    width: 35,
+    height: 35,
+    fontSize: 14,
+    marginLeft: 5,
+    color: '#fff',
+    background: deepPurple[500],
   },
 });
 

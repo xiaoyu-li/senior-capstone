@@ -3,6 +3,8 @@ import { withStyles } from 'material-ui/styles';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import BadgeMenu from '../components/BadgeMenu';
+import Welcome from '../components/Welcome';
 
 class BasicLayout extends Component {
   state = { drawerOpen: false };
@@ -16,25 +18,27 @@ class BasicLayout extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div>
+      <div className={classes.wrapper}>
         <Header onClickMenu={this.handleSidebarToggle} />
+        <div className={classes.imageBG} />
+        <div className={classes.imageWrapper} />
         <Sidebar open={this.state.drawerOpen} onRequestClose={this.handleSidebarClose} />
+        <BadgeMenu />
+        <Welcome />
       </div>
     );
   }
 }
 
-const styles = theme => ({
+const styles = () => ({
   '@global': {
     html: {
-      background: theme.palette.background.default,
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
       boxSizing: 'border-box',
-      '@media print': {
-        background: theme.palette.common.white,
-      },
     },
     '*, *:before, *:after': {
       boxSizing: 'inherit',
@@ -48,6 +52,30 @@ const styles = theme => ({
     alignItems: 'stretch',
     minHeight: '100vh',
     width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.54)',
+  },
+  wrapper: {
+    position: 'relative',
+    height: '100vh',
+  },
+  imageWrapper: {
+    position: 'fixed',
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundImage: 'linear-gradient(rgba(0,0,0,0.4) 0%,rgba(0,0,0,.6) 75%,rgba(0,0,0,.8) 100%)',
+    opacity: '.7',
+    minHeight: '100vh',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  imageBG: {
+    background:
+      'url(https://lh3.googleusercontent.com/-VRJNLuIZyCTgfmY08_dUY-tbgkVTMS95ic6w35AnsmpDNVjesQv-uMnvg1Xk85bXK133Kye4jWPd2SwTtJbg50=w1920-h1080-p-k-nd-no) left top no-repeat',
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    width: '100vw',
+    position: 'relative',
   },
 });
 
