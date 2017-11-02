@@ -10,6 +10,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
+import Notifacation from 'material-ui-icons/Notifacation';
 import Search from './Search';
 
 const Header = (props) => {
@@ -37,6 +38,9 @@ const Header = (props) => {
         <Tooltip title="Toggle light/dark theme" enterDelay={300}>
           <IconButton aria-label="change theme">
             <LightbulbOutline />
+          </IconButton>
+          <IconButton aria-label="change theme">
+            <Notifacation />
           </IconButton>
         </Tooltip>
       </Toolbar>
