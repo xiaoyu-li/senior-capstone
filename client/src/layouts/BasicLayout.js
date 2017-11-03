@@ -3,9 +3,28 @@ import { withStyles } from 'material-ui/styles';
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import BadgeMenu from '../components/BadgeMenu';
+import BadgeList from '../components/BadgeList';
 import Welcome from '../components/Welcome';
-import BadgePanel from '../components/BadgePanel';
+import BadgeListItem from '../components/BadgeListItem';
+
+import chakras from '../common/chakras';
+
+const Badges = (props) => {
+  const { onToggleChakra } = props;
+  return (
+    <BadgeList>
+      {chakras.map((c, i) => (
+        <BadgeListItem
+          label={c.name}
+          type={c.type}
+          progress={c.progress}
+          key={c.name}
+          onClick={onToggleChakra.bind(this, i)}
+        />
+      ))}
+    </BadgeList>
+  );
+};
 
 class BasicLayout extends Component {
   state = { drawerOpen: false };
@@ -18,25 +37,21 @@ class BasicLayout extends Component {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   };
 
+  handleChakraToggle = (index, e) => {
+    console.info(e);
+    console.info(index);
+  };
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.wrapper}>
-        <Header onClickMenu={this.handleSidebarToggle} />
+        <Header onClickMenu={this.handleSidebarToggle} username="ML" />
         <div className={classes.imageBG} />
         <div className={classes.imageWrapper} />
         <Sidebar open={this.state.drawerOpen} onRequestClose={this.handleSidebarClose} />
-        <BadgeMenu>
-          <BadgePanel label="Muladhara" type="t1" progress="10" />
-          <BadgePanel label="Swadhisthana" type="t2" progress="11" />
-          <BadgePanel label="Manipura" type="t3" progress="12" />
-          <BadgePanel label="Anahata" type="t4" progress="13" />
-          <BadgePanel label="Vishuddha" type="t5" progress="14" />
-          <BadgePanel label="Ajna" type="t6" progress="15" />
-          <BadgePanel label="Sahasrara" type="t7" progress="16" />
-        </BadgeMenu>
         <Welcome />
+        <Badges onToggleChakra={this.handleChakraToggle} />
       </div>
     );
   }

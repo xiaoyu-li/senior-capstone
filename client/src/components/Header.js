@@ -19,7 +19,7 @@ import Search from './Search';
 const Header = (props) => {
   // page title
   const title = 'Badging System';
-  const { classes, onClickMenu } = props;
+  const { classes, onClickMenu, username } = props;
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -40,7 +40,7 @@ const Header = (props) => {
             <Settings />
           </IconButton>
         </Tooltip>
-        <Avatar className={classes.avatar}>ML</Avatar>
+        <Avatar className={classes.avatar}>{username}</Avatar>
       </Toolbar>
     </AppBar>
   );
@@ -49,6 +49,7 @@ const Header = (props) => {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   onClickMenu: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 const styles = () => ({
