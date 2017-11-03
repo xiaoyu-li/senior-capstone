@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles/';
 import grey from 'material-ui/colors/grey';
 
-const BadgeMenu = (props) => {
+const BadgeList = (props) => {
   const { classes, children } = props;
   return <div className={classes.menu}>{children}</div>;
 };
 
-BadgeMenu.propTypes = {
+BadgeList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -27,4 +27,4 @@ const styles = () => ({
     overflow: 'hidden',
   },
 });
-export default withStyles(styles)(BadgeMenu);
+export default withStyles(styles)(BadgeList);

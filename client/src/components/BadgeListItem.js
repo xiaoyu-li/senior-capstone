@@ -2,31 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles/';
 
-const BadgePanel = (props) => {
-  const { classes, label, type, progress } = props;
+const BadgeListItem = (props) => {
+  const { classes, label, type, progress, onClick } = props;
   return (
-    <div className={classes.panel}>
+    <div className={classes.panel} onClick={e => onClick(e)}>
       <h1 className={classes.label}>{label}</h1>
-      <h2 className={classes.type}>next goal info</h2>
+      <h2 className={classes.type}>{type}</h2>
       <span className={classes.progress}>{`${progress}%`}</span>
     </div>
   );
 };
 
-BadgePanel.propTypes = {
+BadgeListItem.propTypes = {
   classes: PropTypes.object.isRequired,
+};
+
+/* ==============================================================
+ * styles
+ * ============================================================== */
+
+const sText = {
+  position: 'absolute',
+  top: '50%',
+};
+
+const sTransition = {
+  transition: 'all 0.4s ease',
+  transitionDelay: 0,
 };
 
 const styles = theme => ({
   panel: {
+    extend: sTransition,
     fontFamily: '"Roboto", sans-serif',
     background: theme.palette.common.fullWhite,
     borderBottom: '1px solid #f5f5f5',
     width: '100%',
     position: 'relative',
     flex: 1,
-    transition: 'all 0.4s ease',
-    transitionDelay: '0s',
     '&:hover': {
       flex: 2,
       '& $label': {
@@ -44,36 +57,27 @@ const styles = theme => ({
     },
   },
   label: {
-    position: 'absolute',
-    transition: 'all 0.4s ease',
-    transitionDelay: 0,
+    extend: [sTransition, sText],
     left: '5vh',
-    top: '50%',
     marginTop: '-2vh',
     fontSize: '4vh',
     lineHeight: '4vh',
     fontWeight: 300,
   },
   type: {
-    position: 'absolute',
-    transition: 'all 0.4s ease',
-    transitionDelay: 0,
+    extend: ['sharedTransition', sText],
     left: '5vh',
-    top: '50%',
     marginTop: '2vh',
-    fontSize: '0',
+    fontSize: 0,
     lineHeight: '2vh',
     fontWeight: 100,
   },
   progress: {
-    position: 'absolute',
-    transition: 'all 0.4s ease',
-    transitionDelay: 0,
-    top: '50%',
+    extend: ['sharedTransition', sText],
     right: '5vh',
     fontSize: '1.5vh',
     lineHeight: '1.5vh',
     fontWeight: 500,
   },
 });
-export default withStyles(styles)(BadgePanel);
+export default withStyles(styles)(BadgeListItem);
