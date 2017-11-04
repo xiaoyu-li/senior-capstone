@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles/';
+import { Link } from 'react-router-dom';
 
 const BadgeListItem = (props) => {
   const { classes, label, type, progress, onClick } = props;
   return (
-    <div className={classes.panel} onClick={e => onClick(e)}>
+    <Link className={classes.panel} to={`/chakras/${label}`} onClick={e => onClick(e)}>
       <h1 className={classes.label}>{label}</h1>
       <h2 className={classes.type}>{type}</h2>
       <span className={classes.progress}>{`${progress}%`}</span>
-    </div>
+    </Link>
   );
 };
 
@@ -28,11 +29,11 @@ const sText = {
 
 const sTransition = {
   transition: 'all 0.4s ease',
-  transitionDelay: 0,
 };
 
 const styles = theme => ({
   panel: {
+    color: '#222',
     extend: sTransition,
     fontFamily: '"Roboto", sans-serif',
     background: theme.palette.common.fullWhite,
@@ -41,6 +42,7 @@ const styles = theme => ({
     position: 'relative',
     flex: 1,
     '&:hover': {
+      cursor: 'pointer',
       flex: 2,
       '& $label': {
         left: '10vh',

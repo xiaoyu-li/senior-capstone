@@ -14,7 +14,7 @@ const Sidebar = (props) => {
   const drawer = (
     <div className={classes.nav}>
       <Toolbar className={classes.toolbar}>
-        <Typography className={classes.title} type="title" color="inherit">
+        <Typography className={classes.title} type="title" align="right" color="inherit">
           {NAME}
         </Typography>
       </Toolbar>
@@ -49,9 +49,6 @@ const styles = theme => ({
   },
   title: {
     color: theme.palette.text.secondary,
-    '&:hover': {
-      color: theme.palette.primary[500],
-    },
   },
   toolbar: {
     flexDirection: 'column',
@@ -60,11 +57,6 @@ const styles = theme => ({
   },
   anchor: {
     color: theme.palette.text.secondary,
-  },
-  [theme.breakpoints.up('lg')]: {
-    drawer: {
-      width: '250px',
-    },
   },
 });
 

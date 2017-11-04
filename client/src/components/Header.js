@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import compose from 'recompose/compose';
 
+import Hidden from 'material-ui/Hidden';
+import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import Avatar from 'material-ui/Avatar';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Tooltip from 'material-ui/Tooltip';
 import AppBar from 'material-ui/AppBar';
@@ -11,10 +13,8 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Notifications from 'material-ui-icons/Notifications';
-import Settings from 'material-ui-icons/Settings';
 
 import deepPurple from 'material-ui/colors/deepPurple';
-import Search from './Search';
 
 const Header = (props) => {
   // page title
@@ -23,9 +23,11 @@ const Header = (props) => {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <IconButton onClick={onClickMenu} color="contrast">
-          <MenuIcon />
-        </IconButton>
+        <Hidden smUp>
+          <IconButton onClick={onClickMenu} color="contrast">
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
         <Typography className={classes.title} type="title" noWrap color="inherit">
           {title}
         </Typography>
@@ -33,11 +35,6 @@ const Header = (props) => {
         <Tooltip title="Notification" enterDelay={300}>
           <IconButton aria-label="change theme" color="contrast">
             <Notifications />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Settings" enterDelay={300}>
-          <IconButton aria-label="change theme" color="contrast">
-            <Settings />
           </IconButton>
         </Tooltip>
         <Avatar className={classes.avatar}>{username}</Avatar>
@@ -57,7 +54,7 @@ const styles = () => ({
     flex: '1 1 auto',
   },
   title: {
-    marginLeft: 24,
+    marginLeft: 55,
     flex: '0 1 auto',
   },
   appBar: {
@@ -75,4 +72,4 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles)(Header);
+export default compose(withStyles(styles), withWidth())(Header);

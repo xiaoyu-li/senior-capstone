@@ -22,7 +22,6 @@ const styles = () => ({
     width: 400,
     position: 'fixed',
     display: 'flex',
-    zIndex: 1, // avoid semi-transparent color layer over background-image
     flexDirection: 'column',
     overflow: 'hidden',
   },

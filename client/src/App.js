@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import blue from 'material-ui/colors/blue';
 import pink from 'material-ui/colors/pink';
@@ -15,9 +16,11 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <BasicLayout />
-      </MuiThemeProvider>
+      <Router>
+        <MuiThemeProvider theme={theme}>
+          <BasicLayout />
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }
